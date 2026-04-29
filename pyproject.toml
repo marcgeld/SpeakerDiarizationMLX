@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "speaker-diarization-mlx"
+version = "0.2.0"
+description = "Minimal speaker diarization pipeline built with Apple MLX"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "mlx>=0.29.0; platform_system == 'Darwin'",
+  "numpy>=1.26,<3",
+  "scipy>=1.11",
+  "matplotlib>=3.8",
+  "scikit-learn>=1.4",
+  "torchaudio>=2.2",
+  "soundfile>=0.12",
+  "gTTS>=2.5",
+  "pydub>=0.25",
+]
+
+[project.scripts]
+diarize = "main:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["."]
+
